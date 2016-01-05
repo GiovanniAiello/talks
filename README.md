@@ -1,6 +1,6 @@
 # Talks
 
-This repository contains the supporting material for selected talks related to the *Software Engineering for Economists Initiative*. Usually the talks contain selected material from the lectures in the *Course* or *Bootcamp*.
+This repository contains the supporting material for selected talks related to the *Software Engineering for Economists Initiative*. Usually the talks contain selected material from the lectures in the *Course* or *Bootcamp* repository.
 
 Contact:
 
