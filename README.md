@@ -10,7 +10,7 @@ Contact:
 ## Zurich Initiative on Computational Economics
 
 * [Python for Scientific Computing](http://nbviewer.ipython.org/github/softEcon/talks/blob/master/ZICE/software_engineering/lecture.ipynb)
-* [Software Engineering for Economists]http://nbviewer.ipython.org/github/softEcon/talks/blob/master/ZICE/scientific_python/lecture.ipynb
+* [Software Engineering for Economists](http://nbviewer.ipython.org/github/softEcon/talks/blob/master/ZICE/scientific_python/lecture.ipynb)
 
 Please see [here](http://www.zccfe.uzh.ch/zice16/announcement.html) for additional information about the event.
 
