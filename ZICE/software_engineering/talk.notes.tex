@@ -1,0 +1,74 @@
+\input{../../_material/header}
+%-------------------------------------------------------------------------------
+% Title
+%-------------------------------------------------------------------------------
+\title{Software Engineering for Economists\thanks{For further information or questions and suggestions, please contact us at \href{mailto: info@policy-lab.org}{info@policy-lab.org}.}}
+\author{ }\date{ } 
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}\input{../../_material/titlepage}
+
+%-------------------------------------------------------------------------------
+\section{Building Confidence in a Model}
+%-------------------------------------------------------------------------------
+
+\begin{itemize}
+\item Computational models of socio-economic phenomena are a manifestation of our perceived knowledge about the underlying processes. They key question is how much confidence should we have in a particular model? 
+\item  It turns out to be useful to structure such a discussion around three interrelated questions \citet{Council.2012}.
+\item  Software Engineering encompasses the tools and methods for defining requirements for designing, programming, testing, and managing software. It is crucial to ensure that the computational implementation is a faithful representation of the original mathematical model \citet{Oberkampf.2010}. Thus, it is part of the verification step.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Research Example}
+%-------------------------------------------------------------------------------
+
+
+%-------------------------------------------------------------------------------
+\section{Running Example}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item For the rest of this lecture, we will use a small examples to illustrate ideas of different software engineering tools. However, we will also have a brief look how these tools are applied in the more complex setting of my current research. The online code repository is available \href{https://github.com/robustToolbox/package}{online}.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Testing}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item To see these basic ideas in action, let us check out the testing harness for my current research project \href{https://github.com/robustToolbox/package/tree/master/development/tests}{online}.
+\item Using bugs to define test cases ensures that they only need to be fixed once.
+\end{itemize}
+
+
+%-------------------------------------------------------------------------------
+\section{Profiling}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item Now that we have a well designed and tested version of our code, it is time address any performance issues. We will profile our program by measuring the execution time of the program. 
+\item Profiling tools also measure the time spend in each function allowing us to target our development efforts at particularly time-consuming parts of the code.
+\item Studying the output directly can be rather tedious for large programs. That is when visualization tools turn out very useful. We build on \href{http://jiffyclub.github.io/snakeviz}{SNAKEVIZ}.
+\item For even more advanced visualization, check out \href{https://github.com/pwaller/pyprof2calltree}{pyprof2calltree}. Tutorial for advanced visualization using \href{http://bit.ly/1SaXJgM}{KcacheGrind}.
+\end{itemize}
+
+
+%-------------------------------------------------------------------------------
+\section{Continuous Integration Workflow}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item By running the testing harness early and often, bugs are caught closer to their creation. This makes debugging much easier. 
+\item Scalability of research team is improved as basic quality assurance is automated.
+\item The badges signal to your fellow researchers that we take your responsibilities as a developer of research software serious.
+\item  Reliable work-flow increases own satisfaction.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\section{Best Practices}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item Iterative project development with only incremental addition of features. Testing harness ensures that old features are not broken.
+\end{itemize}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\input{../../_material/references}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
