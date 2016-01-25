@@ -36,9 +36,11 @@ def cleanup():
     for files in matches:
         remove(files)
 
+    remove('.ipynb_checkpoints')
+
 
 def run(type_):
     """ Run Latex in directory dir_.
     """
-    p = subprocess.Popen((type_, 'talk.notes.tex'))
+    p = subprocess.Popen((type_, 'talk.notes'))
     p.wait()
