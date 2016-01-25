@@ -1,0 +1,153 @@
+\documentclass[a4paper,12pt,bold,leqno,fleqn,]{scrartcl}
+
+\renewcommand{\baselinestretch}{1.3}\normalsize 
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand{\thin}{\thinspace}
+\newcommand{\thick}{\thickspace}
+
+\newcommand{\N}{\mathrm{N}} %Normal Distribution
+\newcommand{\U}{\mathrm{U}} %Uniform Distribution
+\newcommand{\D}{\mathrm{D}} %Dirichlet Distribution
+\newcommand{\W}{\mathrm{W}} %Wishart Distribution
+\newcommand{\E}{\mbox{E}}       %Expectation
+\newcommand{\Iden}{\mathbb{I}}  %Identity Matrix
+\newcommand{\Ind}{\mathrm{I}}   %Indicator Function
+
+\newcommand{\var}{\mathrm{var}\thin}
+\newcommand{\plim}{\mathrm{plim}\thin}
+\newcommand{\cov}{\mathrm{cov}\thin}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern5mu{#1#2}}}
+
+
+\usepackage[sans]{dsfont}
+\usepackage[round,longnamesfirst]{natbib}
+\usepackage{bm}                                                                                                 %matrix symbol
+\usepackage{setspace}                                                                                       %Fußnoten (allgm. 
+\usepackage{hyperref}
+%Zeilenabstände)
+\usepackage{threeparttable}
+\usepackage{lscape}                                                                                         %Querformat
+\usepackage[latin1]{inputenc}                                                                       %Umlaute
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancybox}                                                                                       %Boxen und Rahmen
+\usepackage{appendix}
+\usepackage{enumerate}
+                          %EURO Symbol    
+\usepackage{tabularx}   
+\usepackage{longtable}                                                                                  %Mehrseitige Tabellen
+\usepackage{color,colortbl}                                                                         %Farbige Tabellen
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=3cm]{geometry} %Seitenränder
+%\usepackage[normal]{caption2}[2002/08/03]                                              %Titel ohne float - Umgebung    
+\definecolor{lightgrey}{gray}{0.95} %Farben mischen
+\definecolor{grey}{gray}{0.85}
+\definecolor{darkgrey}{gray}{0.80}
+
+\newcommand{\mc}{\multicolumn}
+%\parindent0pt
+
+\newtheorem{Definition}{Definition}
+\newtheorem{Remark}{Remark}
+\newtheorem{Lemma}{Lemma}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Excercise}{Excercise}
+\newtheorem{Result}{Result}
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Prediction}{Prediction}
+\newtheorem{Solution}{Solution}
+\newtheorem{Problem}{Problem}
+
+\setlength{\skip\footins}{1.0cm}            
+\deffootnote[1em]{1.1em}{0em}{\textsuperscript{\thefootnotemark}}                       
+\renewcommand{\arraystretch}{1.05}
+
+%-------------------------------------------------------------------------------
+% Titlepage
+%-------------------------------------------------------------------------------
+\title{\textit{Python} for Scientific Computing\thanks{For further information or questions and suggestions, please contact us at \href{mailto: info@policy-lab.org}{info@policy-lab.org}.}}
+\author{ }
+\date{ } 
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\begin{document}
+
+\maketitle
+
+
+\vspace{0.5cm}
+\renewcommand{\baselinestretch}{1.3}\normalsize 
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+
+\thispagestyle{empty}
+
+%-------------------------------------------------------------------------------
+\section{Why \textit{Python} for Scientific Computing}
+%-------------------------------------------------------------------------------
+
+\begin{itemize}
+\item \textit{Python} is the most popular coding language for teaching introductory computer science courses at top-ranked U.S. departments. Numerous online courses, lecture notes, and tutorials are readily available \href{http://www.fullstackpython.com/best-python-resources.html}{online}.
+\item In the private sector, most recent results from \href{https://www.codeeval.com}{\textit{CodeEval}} point in the same direction.
+\end{itemize}
+%-------------------------------------------------------------------------------
+\section{SciPy Stack}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+
+\item \textit{SciPy Library}, a collection of numerical algorithms and domain-specific toolboxes, including signal processing, optimization, statistics and much more
+\item \textit{NumPy}, the fundamental package for numerical computation. It defines the numerical array and matrix types and basic operations on them
+\item \textit{matplotlib}, a mature and popular plotting package, that provides publication-quality 2D plotting as well as rudimentary 3D plotting
+\item \textit{pandas}, providing high-performance, easy to use data structures
+\item \textit{SymPy}, for symbolic mathematics and computer algebra
+\item \textit{IPython}, a rich interactive interface, letting you quickly process data and test ideas
+\item \textit{nose}, a framework for testing Python code.
+\end{itemize}
+
+Depending on your particular specialization, these packages might be of additional interest to you.
+
+\begin{itemize}
+\item \textit{statsmodels}, a \textit{Python} module that allows users to explore data, estimate statistical models, and perform statistical tests. 
+\end{itemize}
+
+\textit{statsmodels}, toghether with \textit{pandas}, is a potential replacement for the \textit{R}, just use \textit{rpy2} to call \textit{R} functions directly from \textit{Python}. All these packages are included in the \href{https://www.continuum.io/why-anaconda}{\textit{Anaconda Distribution}}.
+%-------------------------------------------------------------------------------
+\section{Basic Example}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item The \textit{IPython} notebook works in your web browser, allowing you to document your computation in an easily reproducible form. See a notebook for 
+\citet{Reinhart.2010} as an example \href{http://nbviewer.jupyter.org/github/vincentarelbundock/Reinhart-Rogoff/blob/master/reinhart-rogoff.ipynb}{here}.
+\end{itemize}
+%-------------------------------------------------------------------------------
+\subsection{Data Visualization }
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item See the \href{http://matplotlib.org/gallery.html}{\textit{matplotlib Thumbnail Gallery}} for many and much more elaborate examples of data visualization.
+\end{itemize}
+%-------------------------------------------------------------------------------
+\subsection{Statistical Analysis}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item We will fit an \textit{Ordinary Least Squares (OLS)} model using \href{http://statsmodels.sourceforge.net}{\textit{statsmodels}}. See the online documentation for a full list of the library's capabilities.
+\end{itemize}
+%-------------------------------------------------------------------------------
+\section{Integrated Development Environment}
+%-------------------------------------------------------------------------------
+\begin{itemize}
+\item For simple analysis the IPython Notebook or even the command line is sufficient. However, for more involved scientific programming. I found the use of an IDE very useful.
+\item An integrated development environment (IDE) is a software application that provides comprehensive facilities to computer programmers for software development.
+
+If we have time, we can get going on the Getting Started Guide for Students (http://bit.ly/1WDDJny) together. 
+\end{itemize}
+
+
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\bibliography{/home/peisenha/office/workspace/bibliography/literature}
+\bibliographystyle{apalike}
+%-------------------------------------------------------------------------------
+%-------------------------------------------------------------------------------
+\end{document}
