@@ -6,4 +6,4 @@
 import os
 
 # Create and serve the slides.
-os.system('ipython nbconvert --to slides talk.slides.ipynb --post serve')
+os.system('ipython nbconvert --to slides talk.ipynb --post serve')
