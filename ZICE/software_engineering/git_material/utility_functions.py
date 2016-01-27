@@ -1,22 +1,21 @@
 """ This module contains a variety of utility functions.
 """
 
+# project library
+from checks import basic_checks
+
 
 def baseline_utility(x, alpha):
     """ This function returns the baseline utility.
     """
     # Guard interface.
-    assert (isinstance(alpha, float))
-    assert (alpha > 0.0)
-    assert (isinstance(x, float))
-    assert (x >= 0.0)
+    assert basic_checks('baseline_utility', 'in', x, alpha)
 
     # Calculate utility.
-    utility = x ** alpha
+    rslt = x ** alpha
 
     # Check result.
-    assert (isinstance(utility, float))
-    assert (utility > 0.0)
+    assert basic_checks('baseline_utility', 'out', rslt)
 
     # Finishing
-    return utility
+    return rslt

@@ -1,0 +1,94 @@
+""" This module contains some basic tests for the integrity of the input and
+output arguments of functions.
+"""
+
+# standard library
+from functools import partial
+
+# SciPy Stack
+import numpy as np
+
+
+def basic_checks(name, which, *args):
+    """ Some basic checks.
+    """
+    # Guard interface.
+    assert (which in ['in', 'out'])
+    # Run relevent set of checks based on function name and code section.
+    if name == 'baseline_utility':
+        if which == 'in':
+            # Distribute arguments
+            x, alpha = args
+            # Perform checks.
+            assert (isinstance(alpha, float))
+            assert (alpha > 0.0)
+            assert (isinstance(x, float))
+            assert (x >= 0.0)
+        elif which == 'out':
+            # Distribute arguments.
+            rslt, = args
+            # Perform check.
+            assert (isinstance(rslt, float))
+            assert (rslt > 0.0)
+        else:
+            raise AssertionError
+    elif name == 'naive_monte_carlo':
+        if which == 'in':
+            # Distribute arguments.
+            func, bounds, num_draws = args
+            # Perform checks.
+            assert (isinstance(func, partial))
+            assert (isinstance(num_draws, int))
+            assert (num_draws > 0)
+            assert (bounds[0] < bounds[1])
+        elif which == 'out':
+            # Distribute arguments.
+            rslt, = args
+            # Perform checks.
+            assert (isinstance(rslt, float))
+            assert (np.isfinite(rslt))
+        else:
+            raise AssertionError
+    elif name == 'get_baseline_lognormal_naive':
+        if which == 'in':
+            # Distribute arguments.
+            ((alpha, mean, sd, num_draws),) = args
+            # Perform checks.
+            assert (isinstance(num_draws, int))
+            assert (num_draws, int)
+            assert (isinstance(mean, float))
+            assert (isinstance(sd, float))
+            assert (isinstance(alpha, float))
+            assert (sd >= 0.00)
+            assert (alpha >= 0.00)
+        elif which == 'out':
+            # Distribute arguments.
+            rslt, = args
+            # Perform checks.
+            assert (isinstance(rslt, float))
+            assert (rslt > 0.0)
+        else:
+            raise AssertionError
+    elif name == '_wrapper_baseline':
+        if which == 'in':
+            # Distribute arguments.
+            alpha, mean, sd, x = args
+            # Perform checks.
+            assert (isinstance(mean, float))
+            assert (isinstance(sd, float))
+            assert (isinstance(alpha, float))
+            assert (sd >= 0.00)
+            assert (alpha >= 0.00)
+        elif which == 'out':
+            # Distribute arguments.
+            rslt, = args
+            # Perform checks,
+            assert (isinstance(rslt, float))
+            assert (rslt >= 0.0)
+        else:
+            raise AssertionError
+    else:
+        raise AssertionError
+
+    # Finishing
+    return True

@@ -2,7 +2,10 @@
 utility functions, return distributions, and integration strategies.
 """
 
-# project
+# TODO: This is wrong, refers to determination of upper bound for MC.
+# TODO: unit test battery ... take and align with notebook.
+
+# project library
 from eu_calculations import get_baseline_lognormal_naive
 
 """ Specify Request
