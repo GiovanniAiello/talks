@@ -59,5 +59,5 @@ X = sm.add_constant(X)
 # Specify and fit the model
 rslt = sm.OLS(Y, X).fit()
 
-# Provide some summary
+# Provide some summary information
 print(rslt.summary())
