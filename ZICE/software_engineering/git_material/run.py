@@ -2,11 +2,8 @@
 utility functions, return distributions, and integration strategies.
 """
 
-# TODO: This is wrong, refers to determination of upper bound for MC.
-# TODO: unit test battery ... take and align with notebook.
-
 # project library
-from eu_calculations import get_baseline_lognormal_naive
+from eu_calculations import get_baseline_lognormal
 
 """ Specify Request
 """
@@ -15,12 +12,17 @@ from eu_calculations import get_baseline_lognormal_naive
 alpha = 0.01
 
 # Distribution of Returns
-mean, sd = 0.01, 1.0
+shape = 0.01
 
 # Integration
-num_draws = 1000
+technique = 'naive_mc'
+
+int_options = dict()
+int_options['naive_mc'] = dict()
+int_options['naive_mc']['implementation'] = 'slow'
+int_options['naive_mc']['num_draws'] = 1000
 
 """ Calculate expected utility
 """
 
-get_baseline_lognormal_naive(alpha, mean, sd, num_draws)
+get_baseline_lognormal(alpha, shape, technique, int_options)

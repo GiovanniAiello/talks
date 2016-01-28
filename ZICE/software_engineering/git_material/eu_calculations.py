@@ -13,43 +13,51 @@ from utility_functions import baseline_utility
 from checks import basic_checks
 
 
-""" Baseline Utility,Lognormal Returns, Naive Monte Carlo
+""" Baseline Utility, Lognormal Returns, Naive Monte Carlo
 """
 
 
-def get_baseline_lognormal_naive(alpha, mean, sd, num_draws):
+def get_baseline_lognormal(alpha, shape, technique, int_options):
     """ Get the expected returns by drawing numerous random deviates from a
     lognormal distribution.
     """
     # Guard interface.
-    args = (alpha, mean, sd, num_draws)
-    assert basic_checks('get_baseline_lognormal_naive', 'in', args)
+    args = (alpha, shape, technique, int_options)
+    assert basic_checks('get_baseline_lognormal', 'in', args)
 
     # Construct bounds based on quantiles of lognormal distribution.
-    lower, upper = 0, lognorm.ppf(0.975, 1.0)
+    lower, upper = 0, lognorm.ppf(0.99, shape)
 
-    # Prepare wrapper for integration strategy.
-    func = partial(_wrapper_baseline, alpha, mean, sd)
+    # Prepare wrapper for alternative integration strategies.
+    func = partial(_wrapper_baseline, alpha, shape)
 
     # Perform native monte carlo integration.
-    rslt = naive_monte_carlo(func, (lower, upper), num_draws)
+    if technique == 'naive_mc':
+        # Distribute relevant integration options.
+        num_draws = int_options['naive_mc']['num_draws']
+        implementation = int_options['naive_mc']['implementation']
+        # Perform integration.
+        rslt = naive_monte_carlo(func, (lower, upper),
+                                 num_draws, implementation)
+    else:
+        raise NotImplementedError
 
     # Check result.
-    assert basic_checks('get_baseline_lognormal_naive', 'out', rslt)
+    assert basic_checks('get_baseline_lognormal', 'out', rslt)
 
     # Finishing
     return rslt
 
 
-def _wrapper_baseline(alpha, mean, sd, x):
+def _wrapper_baseline(alpha, shape, x):
     """ This private function constructs the integrand for the application of
     numerical integration strategies.
     """
     # Guard interface.
-    assert basic_checks('_wrapper_baseline', 'in', alpha, mean, sd, x)
+    assert basic_checks('_wrapper_baseline', 'in', alpha, shape, x)
 
     # Evaluate utility and weigh by probability.
-    rslt = baseline_utility(x, alpha) * lognorm.pdf(mean, sd)
+    rslt = baseline_utility(x, alpha) * lognorm.pdf(x, shape)
 
     # Check result.
     assert basic_checks('_wrapper_baseline', 'out', rslt)

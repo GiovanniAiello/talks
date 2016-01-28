@@ -14,14 +14,14 @@ def basic_checks(name, which, *args):
     """
     # Guard interface.
     assert (which in ['in', 'out'])
-    # Run relevent set of checks based on function name and code section.
+    # Run relevant set of checks based on function name and code section.
     if name == 'baseline_utility':
         if which == 'in':
             # Distribute arguments
             x, alpha = args
             # Perform checks.
             assert (isinstance(alpha, float))
-            assert (alpha > 0.0)
+            assert (alpha >= 0.0)
             assert (isinstance(x, float))
             assert (x >= 0.0)
         elif which == 'out':
@@ -35,8 +35,9 @@ def basic_checks(name, which, *args):
     elif name == 'naive_monte_carlo':
         if which == 'in':
             # Distribute arguments.
-            func, bounds, num_draws = args
+            ((func, bounds, num_draws, implementation),) = args
             # Perform checks.
+            assert (implementation in ['fast', 'slow'])
             assert (isinstance(func, partial))
             assert (isinstance(num_draws, int))
             assert (num_draws > 0)
@@ -49,17 +50,15 @@ def basic_checks(name, which, *args):
             assert (np.isfinite(rslt))
         else:
             raise AssertionError
-    elif name == 'get_baseline_lognormal_naive':
+    elif name == 'get_baseline_lognormal':
         if which == 'in':
             # Distribute arguments.
-            ((alpha, mean, sd, num_draws),) = args
+            ((alpha, shape, technique, int_options),) = args
             # Perform checks.
-            assert (isinstance(num_draws, int))
-            assert (num_draws, int)
-            assert (isinstance(mean, float))
-            assert (isinstance(sd, float))
+            assert (technique in ['naive_mc'])
+            assert (isinstance(shape, float))
             assert (isinstance(alpha, float))
-            assert (sd >= 0.00)
+            assert (shape > 0.00)
             assert (alpha >= 0.00)
         elif which == 'out':
             # Distribute arguments.
@@ -72,12 +71,11 @@ def basic_checks(name, which, *args):
     elif name == '_wrapper_baseline':
         if which == 'in':
             # Distribute arguments.
-            alpha, mean, sd, x = args
+            alpha, shape, x = args
             # Perform checks.
-            assert (isinstance(mean, float))
-            assert (isinstance(sd, float))
+            assert (isinstance(shape, float))
             assert (isinstance(alpha, float))
-            assert (sd >= 0.00)
+            assert (shape > 0.00)
             assert (alpha >= 0.00)
         elif which == 'out':
             # Distribute arguments.
@@ -89,6 +87,19 @@ def basic_checks(name, which, *args):
             raise AssertionError
     else:
         raise AssertionError
+
+    # Finishing
+    return True
+
+
+def check_integration_options(technique, int_options):
+    """ This function checks the specified integration options.
+    """
+
+    if technique == 'naive_mc':
+        assert  (int_options['naive_mc']['implementation'] in ['slow', 'fast'])
+        assert (isinstance(int_options['naive_mc']['num_draws'], int))
+        assert (int_options['naive_mc']['num_draws'] > 0)
 
     # Finishing
     return True
