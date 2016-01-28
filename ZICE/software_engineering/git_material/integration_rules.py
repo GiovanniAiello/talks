@@ -8,17 +8,18 @@ import numpy as np
 from checks import basic_checks
 
 
-def naive_monte_carlo(func, bounds, num_draws, implementation):
+def naive_monte_carlo(func, bounds, num_draws, implementation, seed):
     """ This function performs a Monte Carlo integration.
     """
     # Guard interface.
-    args = (func, bounds, num_draws, implementation)
+    args = (func, bounds, num_draws, implementation, seed)
     assert basic_checks('naive_monte_carlo', 'in', args)
 
     # Distribute bounds.
     lower, upper = bounds
 
     # Draw requested number of deviates.
+    np.random.seed(seed)
     deviates = np.random.uniform(lower, upper, size=num_draws)
 
     # Implement native Monte Carlo approach.

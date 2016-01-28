@@ -44,19 +44,60 @@ def test_invalid_request():
         get_baseline_lognormal(alpha, shape, technique, int_options)
 
 
-def test_closed_form():
+def test_closed_form_quad():
     """ Test whether the results line up with a closed form solution for the
-    special case, where alpha is set to zero.
+    special case, where alpha is set to zero. This function test the
+    quadrature implementation.
     """
-    # Generate a random request.
-    _, shape, technique, int_options = generate_random_request()
-    # Restrict to special case.
-    alpha, shape = 0.0, 0.001
-    # Calculate closed form solution and simulate special case.
-    closed_form = lognorm.mean(shape)
-    simulated = get_baseline_lognormal(alpha, shape, technique, int_options)
-    # Test equality.
-    np.testing.assert_almost_equal(closed_form, simulated, decimal=3)
+    for _ in range(10):
+        # Generate random request.
+        alpha, shape, _, int_options = generate_random_request()
+        # Restrict to special case.
+        alpha, shape = 0.0, 0.001
+        # Calculate closed form solution and simulate special case.
+        closed_form = lognorm.mean(shape)
+        simulated = get_baseline_lognormal(alpha, shape, 'quad', int_options)
+        # Test equality.
+        np.testing.assert_almost_equal(closed_form, simulated, decimal=3)
+
+
+def test_naive_implementations():
+    """ Test whether the results from the fast and slow implementation of the
+    naive monte carlo integration are identical.
+    """
+    technique = 'naive_mc'
+    for _ in range(10):
+        # Generate random request.
+        alpha, shape, _, int_options = generate_random_request()
+        # Loop over alternative implementations.
+        baseline = None
+        for implementation in ['fast', 'slow']:
+            int_options['naive_mc']['implementation'] = implementation
+            rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
+            if baseline is None:
+                baseline = rslt
+        # Test equality.
+        np.testing.assert_almost_equal(baseline, rslt)
+
+
+def test_closed_form_naive():
+    """ Test whether the results line up with a closed form solution for the
+    special case, where alpha is set to zero. This function test the naive
+    monte carlo implementation.
+    """
+    for _ in range(10):
+        # Generate random request.
+        alpha, shape, _, int_options = generate_random_request()
+        # Set options favourable.
+        int_options['naive_mc']['num_draws'] = 1000
+        int_options['naive_mc']['implementation'] = 'fast'
+        # Restrict to special case.
+        alpha, shape = 0.0, 0.001
+        # Calculate closed form solution and simulate special case.
+        closed_form = lognorm.mean(shape)
+        simulated = get_baseline_lognormal(alpha, shape, 'naive_mc', int_options)
+        # Test equality.
+        np.testing.assert_almost_equal(closed_form, simulated, decimal=3)
 
 
 def test_regression():
@@ -70,4 +111,4 @@ def test_regression():
     # Perform calculation.
     rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
     # Ensure equivalence with expected results up to numerical precision.
-    np.testing.assert_almost_equal(rslt, 0.65222028429023948)
+    np.testing.assert_almost_equal(rslt, 0.21990743996551923)

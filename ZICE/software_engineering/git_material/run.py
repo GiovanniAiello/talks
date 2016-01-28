@@ -14,13 +14,15 @@ alpha = 0.01
 # Distribution of Returns
 shape = 0.01
 
-# Integration
-technique = 'naive_mc'
+# Integration techniques
+technique = 'quad'
 
 int_options = dict()
-int_options['naive_mc'] = dict()
-int_options['naive_mc']['implementation'] = 'slow'
-int_options['naive_mc']['num_draws'] = 1000
+if technique == 'naive_mc':
+    int_options['naive_mc'] = dict()
+    int_options['naive_mc']['implementation'] = 'slow'
+    int_options['naive_mc']['num_draws'] = 1000
+    int_options['naive_mc']['seed'] = 123
 
 """ Calculate expected utility
 """

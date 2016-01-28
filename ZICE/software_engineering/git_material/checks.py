@@ -35,12 +35,14 @@ def basic_checks(name, which, *args):
     elif name == 'naive_monte_carlo':
         if which == 'in':
             # Distribute arguments.
-            ((func, bounds, num_draws, implementation),) = args
+            ((func, bounds, num_draws, implementation, seed),) = args
             # Perform checks.
             assert (implementation in ['fast', 'slow'])
             assert (isinstance(func, partial))
             assert (isinstance(num_draws, int))
             assert (num_draws > 0)
+            assert (isinstance(seed, int))
+            assert (seed > 0)
             assert (bounds[0] < bounds[1])
         elif which == 'out':
             # Distribute arguments.
@@ -55,7 +57,8 @@ def basic_checks(name, which, *args):
             # Distribute arguments.
             ((alpha, shape, technique, int_options),) = args
             # Perform checks.
-            assert (technique in ['naive_mc'])
+            assert (check_integration_options(technique, int_options))
+            assert (technique in ['naive_mc', 'quad'])
             assert (isinstance(shape, float))
             assert (isinstance(alpha, float))
             assert (shape > 0.00)
@@ -100,6 +103,8 @@ def check_integration_options(technique, int_options):
         assert  (int_options['naive_mc']['implementation'] in ['slow', 'fast'])
         assert (isinstance(int_options['naive_mc']['num_draws'], int))
         assert (int_options['naive_mc']['num_draws'] > 0)
+        assert (isinstance(int_options['naive_mc']['seed'], int))
+        assert (int_options['naive_mc']['seed'] > 0)
 
     # Finishing
     return True

@@ -7,6 +7,8 @@ from functools import partial
 # SciPy Stack
 from scipy.stats import lognorm
 
+import scipy.integrate as integrate
+
 # project library
 from integration_rules import naive_monte_carlo
 from utility_functions import baseline_utility
@@ -26,21 +28,24 @@ def get_baseline_lognormal(alpha, shape, technique, int_options):
     assert basic_checks('get_baseline_lognormal', 'in', args)
 
     # Construct bounds based on quantiles of lognormal distribution.
-    lower, upper = 0, lognorm.ppf(0.99, shape)
+    lower, upper = 0, lognorm.ppf(0.9999999, shape)
 
     # Prepare wrapper for alternative integration strategies.
     func = partial(_wrapper_baseline, alpha, shape)
-
     # Perform native monte carlo integration.
     if technique == 'naive_mc':
         # Distribute relevant integration options.
-        num_draws = int_options['naive_mc']['num_draws']
         implementation = int_options['naive_mc']['implementation']
-        # Perform integration.
-        rslt = naive_monte_carlo(func, (lower, upper),
-                                 num_draws, implementation)
+        num_draws = int_options['naive_mc']['num_draws']
+        seed = int_options['naive_mc']['seed']
+        # Perform naive Monte Carlo integration.
+        rslt = naive_monte_carlo(func, (lower, upper), num_draws,
+                                 implementation, seed)
+    elif technique == 'quad':
+        # Perform integration based on quadrature.
+        rslt = integrate.quad(func, lower, upper)[0]
     else:
-        raise NotImplementedError
+        pass
 
     # Check result.
     assert basic_checks('get_baseline_lognormal', 'out', rslt)
