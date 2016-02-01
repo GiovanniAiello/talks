@@ -6,10 +6,13 @@ from scipy.stats import lognorm
 
 import numpy as np
 
+import sys
+
 # other libraries
 import pytest
 
 # project library
+sys.path.append('../')
 from eu_calculations import get_baseline_lognormal
 from auxiliary import generate_random_request
 

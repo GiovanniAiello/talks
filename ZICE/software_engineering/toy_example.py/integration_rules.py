@@ -5,7 +5,7 @@
 import numpy as np
 
 # project library
-from checks import basic_checks
+from testing.checks import basic_checks
 
 
 def naive_monte_carlo(func, bounds, num_draws, implementation, seed):

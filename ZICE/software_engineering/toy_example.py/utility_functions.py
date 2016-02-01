@@ -1,8 +1,8 @@
 """ This module contains a variety of utility functions.
 """
 
-# project library
-from checks import basic_checks
+# testing library
+from testing.checks import basic_checks
 
 
 def baseline_utility(x, alpha):

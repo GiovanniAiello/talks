@@ -12,7 +12,9 @@ import scipy.integrate as integrate
 # project library
 from integration_rules import naive_monte_carlo
 from utility_functions import baseline_utility
-from checks import basic_checks
+
+# testing library
+from testing.checks import basic_checks
 
 
 """ Baseline Utility, Lognormal Returns, Naive Monte Carlo
