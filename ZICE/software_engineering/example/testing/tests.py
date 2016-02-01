@@ -14,15 +14,37 @@ import numpy as np
 import pytest
 
 # PYTHONPATH
-PROJECT_DIR = os.path.dirname(os.path.realpath(__file__)).replace('testing', '')
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+PROJECT_DIR.replace('example/testing', '')
 sys.path.append(PROJECT_DIR)
 
 # project library
-from eu_calculations import get_baseline_lognormal
-from auxiliary import generate_random_request
+import example
 
 # ensure recomputability
 np.random.seed(123)
+
+""" Auxiliary functions
+"""
+
+
+def generate_random_request():
+    """ Generate a random admissible request.
+    """
+    # Draw random deviates that honor the constraints for the utility
+    # function and distribution of returns.
+    alpha, shape = np.random.uniform(low=0.0001, size=2)
+    # Draw a random integration technique.
+    technique = np.random.choice(['naive_mc', 'quad'])
+    # Add options.
+    int_options = dict()
+    int_options['naive_mc'] = dict()
+    int_options['naive_mc']['implementation'] = np.random.choice(['slow', 'fast'])
+    int_options['naive_mc']['num_draws'] = np.random.random_integers(10, 1000)
+    int_options['naive_mc']['seed'] = np.random.random_integers(10, 1000)
+
+    # Finishing
+    return alpha, shape, technique, int_options
 
 
 """ Some basic testing of our illustrative routines.
@@ -37,7 +59,7 @@ def test_random_requests():
         # Generate random request.
         alpha, shape, technique, int_options = generate_random_request()
         # Perform calculation.
-        get_baseline_lognormal(alpha, shape, technique, int_options)
+        example.get_baseline_lognormal(alpha, shape, technique, int_options)
 
 
 def test_invalid_request():
@@ -49,7 +71,7 @@ def test_invalid_request():
         # Invalidate request.
         technique = 'gaussian_quadrature'
         # Parameters outside defined ranges.
-        get_baseline_lognormal(alpha, shape, technique, int_options)
+        example.get_baseline_lognormal(alpha, shape, technique, int_options)
 
 
 def test_closed_form_quad():
@@ -64,7 +86,8 @@ def test_closed_form_quad():
         alpha, shape = 0.0, 0.001
         # Calculate closed form solution and simulate special case.
         closed_form = lognorm.mean(shape)
-        simulated = get_baseline_lognormal(alpha, shape, 'quad', int_options)
+        simulated = example.get_baseline_lognormal(alpha, shape, 'quad',
+                                               int_options)
         # Test equality.
         np.testing.assert_almost_equal(closed_form, simulated, decimal=3)
 
@@ -81,7 +104,8 @@ def test_naive_implementations():
         baseline = None
         for implementation in ['fast', 'slow']:
             int_options['naive_mc']['implementation'] = implementation
-            rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
+            rslt = example.get_baseline_lognormal(alpha, shape, technique,
+                                            int_options)
             if baseline is None:
                 baseline = rslt
         # Test equality.
@@ -103,7 +127,8 @@ def test_closed_form_naive():
         alpha, shape = 0.0, 0.001
         # Calculate closed form solution and simulate special case.
         closed_form = lognorm.mean(shape)
-        simulated = get_baseline_lognormal(alpha, shape, 'naive_mc', int_options)
+        simulated = example.get_baseline_lognormal(alpha, shape, 'naive_mc',
+                                            int_options)
         # Test equality.
         np.testing.assert_almost_equal(closed_form, simulated, decimal=3)
 
@@ -117,7 +142,7 @@ def test_regression():
     # Generate random request.
     alpha, shape, technique, int_options = generate_random_request()
     # Perform calculation.
-    rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
+    rslt = example.get_baseline_lognormal(alpha, shape, technique, int_options)
     # Ensure equivalence with expected results up to numerical precision.
     np.testing.assert_almost_equal(rslt, 0.21990743996551923)
 
