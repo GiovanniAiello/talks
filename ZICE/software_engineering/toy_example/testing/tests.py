@@ -1,18 +1,23 @@
 """ This module contains some basic tests.
 """
 
+# standard library
+import sys
+import os
+
 # SciPy Stack
 from scipy.stats import lognorm
 
 import numpy as np
 
-import sys
-
 # other libraries
 import pytest
 
+# PYTHONPATH
+PROJECT_DIR = os.path.dirname(os.path.realpath(__file__)).replace('testing', '')
+sys.path.append(PROJECT_DIR)
+
 # project library
-sys.path.append('../')
 from eu_calculations import get_baseline_lognormal
 from auxiliary import generate_random_request
 
@@ -115,3 +120,21 @@ def test_regression():
     rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
     # Ensure equivalence with expected results up to numerical precision.
     np.testing.assert_almost_equal(rslt, 0.21990743996551923)
+
+
+''' Execute module as a script, to illustrate the advantages of test automation.
+'''
+
+if __name__ == "__main__":
+
+    test_random_requests()
+
+    test_invalid_request()
+
+    test_closed_form_quad()
+
+    test_naive_implementations()
+
+    test_closed_form_naive()
+
+    test_regression()
