@@ -3,7 +3,7 @@ utility functions, return distributions, and integration strategies.
 """
 
 # project library
-from eu_calculations import get_baseline_lognormal
+from eupy import get_baseline_lognormal
 
 """ Specify Request
 """
@@ -26,5 +26,6 @@ if technique == 'naive_mc':
 
 """ Calculate expected utility
 """
+rslt = get_baseline_lognormal(alpha, shape, technique, int_options)
 
-get_baseline_lognormal(alpha, shape, technique, int_options)
+print(' Expected Utility {}'.format(rslt))
