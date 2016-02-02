@@ -11,8 +11,8 @@ def random_sample(betas, num_agents):
     # Construct auxiliary objects.
     num_covars = betas.shape[0]
 
-    # Set a random seed to ensure recomputability in light of randomness
-    np.random.seed(123)
+    # Set a seed to ensure recomputability in light of randomness
+    np.random.seed(4292367295)
 
     # Sample exogenous agent characteristics from a uniform distribution in
     # a given shape
