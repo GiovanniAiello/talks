@@ -18,6 +18,7 @@ betas = np.array([0.22, 0.30, -0.1]).T
 # Generate random sample.
 Y, X = random_sample(betas, num_agents)
 
+
 # Perform a basic OLS regression and print out summary information.
 rslt = sm.OLS(Y, X).fit()
 print(rslt.summary())
