@@ -9,8 +9,7 @@ Contact:
 
 ## [Python for Scientific Computing in Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/scientific_python/talk.ipynb)
 
-I provide a brief introduction to different aspects of the *Python* ecosystem that are of interest to economists. The material was updated last for the *Zurich Initiative on Computational Economics* in January 2016. [slides](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/scientific_python/talk.ipynb)
+I provide a brief introduction to different aspects of the *Python* ecosystem that are of interest to economists. The material was updated last for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/pastevents/zice16/announcement.html) in January 2016.  
 
-### Introduction to Software Engineering
-
-I provide a brief introduction to selected software engineering practices that are of interest to economists. The material was updated last for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/pastevents/zice16/announcement.html) in January 2016.  (**[slides](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/introduction_software_engineering/talk.ipynb)**)
+### [Introduction to Software Engineering](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/introduction_software_engineering/talk.ipynb)
+I provide a brief introduction to selected software engineering practices that are of interest to economists. The material was updated last for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/pastevents/zice16/announcement.html) in January 2016.  
