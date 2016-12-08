@@ -7,9 +7,14 @@ Contact:
 [![Join the chat at https://gitter.im/softEcon/contact](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/softEcon/contact?utm_source=share-link&utm_medium=link&utm_campaign=share-link
 )
 
-## Zurich Initiative on Computational Economics
+## Python for Scientific Computing in Economics
 
-* [Python for Scientific Computing](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/ZICE/scientific_python/talk.ipynb)
-* [Software Engineering for Economists](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/ZICE/software_engineering/talk.ipynb)
+I provide a brief introduction to different aspects of the *Python* ecosystem that are of interest to economists.
 
-Please see [here](http://www.zccfe.uzh.ch/zice16/announcement.html) for additional information about the event which took place at the [University of Zurich](http://www.uzh.ch/en.html) from January 27 to February 4, 2016.
+* [Slides](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/scientific_python/talk.ipynb)
+
+### Introduction to Software Engineering
+
+I provide a brief introduction to selected software engineering practices that are of interest to economists.
+
+* [Slides](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/introduction_software_engineering/talk.ipynb)
