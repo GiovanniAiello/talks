@@ -15,6 +15,6 @@ I provide a brief introduction to different aspects of the *Python* ecosystem th
 
 I provide a brief introduction to selected software engineering practices that are of interest to economists. The material was updated last for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/pastevents/zice16/announcement.html) in January 2016.  
 
-### [Introduction to Structural Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/structural_economics/talk.ipynb#/)
+### [Introduction to Structural Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_econometrics/talk.ipynb#/)
 
 I provide a brief introduction to structural economic models. The material is under development for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/zice17/announcement.html) in January 2017.  
