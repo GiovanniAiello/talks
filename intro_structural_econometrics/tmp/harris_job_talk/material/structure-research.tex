@@ -1,0 +1,31 @@
+  %!TEX root = ../main.tex
+\tikzstyle{block} = [rectangle, thick, draw, text width=10em, text centered, minimum height=4em]
+\tikzstyle{big_block} = [rectangle, thick, draw, minimum width=15cm, text centered, minimum height=4em]
+\tikzstyle{line} = [draw, -latex']
+
+\tikzset{
+    *|/.style={
+        to path={
+            (perpendicular cs: horizontal line through={(\tikztostart)},
+                                 vertical line through={(\tikztotarget)})
+            % is the same as (\tikztostart -| \tikztotarget)
+            % but just to be safe: http://tex.stackexchange.com/a/29781/16595
+            -- (\tikztotarget) \tikztonodes
+        }
+    }
+}
+
+\begin{tikzpicture}[grow'=down,level distance=1.25in, on grid]
+      % \tikzset{edge from parent/.style=
+      %       {very thin, draw, edge from parent fork right},
+      %    every tree node/.style=
+      %       {draw,minimum width=1in,text width=1in,align=center}}
+      \node(models) [block] {\Large Dynamic Discrete Choice Models};
+      \node(left_child) [block, below left=3cm and 4cm of models] {\Large Risk};
+      \node(right_child) [block, below right=3cm and 4cm of models] {\Large Ambiguity};
+
+       \path [line] (models.south) -- (left_child.north);
+       \path [line] (models.south) -- (right_child.north);
+
+
+\end{tikzpicture}
