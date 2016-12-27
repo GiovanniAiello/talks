@@ -42,5 +42,5 @@ def cleanup():
 def run(type_):
     """ Run Latex in directory dir_.
     """
-    p = subprocess.Popen((type_, 'notes'))
-    p.wait()
+    #p = subprocess.Popen((type_, 'notes'))
+    #p.wait()

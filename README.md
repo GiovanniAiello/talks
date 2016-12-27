@@ -17,4 +17,4 @@ I provide a brief introduction to selected software engineering practices that a
 
 ### [Introduction to Structural Econometrics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_econometrics/talk.ipynb#/)
 
-I provide a brief introduction to structural econometric models. The material is under development for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/zice17/announcement.html) in January 2017.  
+I provide a brief introduction to structural econometric models. The material is under development for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/zice17/announcement.html) in January 2017. Additional material is available [here](https://softecon.gitbooks.io/guide/content/talks.html).
