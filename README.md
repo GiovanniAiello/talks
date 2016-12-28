@@ -7,7 +7,7 @@ Contact:
 [![Join the chat at https://gitter.im/softEcon/contact](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/softEcon/contact?utm_source=share-link&utm_medium=link&utm_campaign=share-link
 )
 
-### [Python for Scientific Computing in Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/scientific_python/talk.ipynb)
+### [Python for Scientific Computing in Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_scientific_python/talk.ipynb)
 
 I provide a brief introduction to different aspects of the *Python* ecosystem that are of interest to economists. The material was updated last for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/pastevents/zice16/announcement.html) in January 2016.
 
