@@ -18,3 +18,7 @@ I provide a brief introduction to selected software engineering practices that a
 ### [Introduction to Structural Econometrics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_econometrics/talk.ipynb#/)
 
 I provide a brief introduction to structural econometric models. The material is under development for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/zice17/announcement.html) in January 2017.
+
+### [Introduction to Structural Estimation](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_estimation/talk.ipynb#/)
+
+I provide a brief introduction to structural estimation. The material is under development for the [*Zurich Initiative on Computational Economics*](http://www.zccfe.uzh.ch/en/zice17/announcement.html) in January 2017.
