@@ -9,7 +9,8 @@ def crit_func_sml(probs, obs_data, num_sim):
     obs_counts = np.sum(obs_data, axis=0).tolist()
     num_sides = len(obs_counts)
 
-    sim_data = simulate_sample(num_sim, probs)
+
+    sim_data = simulate_sample(num_sim, probs, 1233)
     sim_probs = (np.sum(sim_data, axis=0) / num_sim).tolist()
 
     rslt = 0
@@ -19,10 +20,11 @@ def crit_func_sml(probs, obs_data, num_sim):
     return -rslt
 
 
-def simulate_sample(num_draws, probs):
+def simulate_sample(num_draws, probs, seed=123):
     """ Simulate a sample of random draws.
     """
 
+    np.random.seed(seed)
     num_sides = len(probs)
 
     data = np.zeros((num_draws, num_sides))
@@ -66,7 +68,7 @@ def crit_func_msm(probs, obs_data, num_sim):
 
     obs_counts = np.sum(obs_data, axis=0) / num_draws
 
-    sim_data = simulate_sample(num_sim, probs)
+    sim_data = simulate_sample(num_sim, probs, 1233)
     sim_counts = np.sum(sim_data, axis=0)/num_sim
 
     return float(np.sum((obs_counts - sim_counts) ** 2))
