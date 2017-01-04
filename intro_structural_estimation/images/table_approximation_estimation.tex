@@ -1,0 +1,82 @@
+%!TEX root = ../main.tex
+\documentclass{beamer} % Gliederung im Kopf, sections und subsections
+\renewcommand{\baselinestretch}{1.5}\normalsize
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{tabu}
+\usepackage{etex}
+%\usepackage{beamerthemesplit}
+%\useoutertheme[subsection=false]{smoothbars}
+%\usepackage[final]{pdfpages}
+\usepackage{bibentry}
+\usepackage{bm}
+\usepackage{bigints}
+\usepackage{graphicx}
+\usepackage{relsize}
+\usepackage[round,longnamesfirst]{natbib}
+\usepackage{bm}																									%matrix symbol
+\usepackage{bbm}
+\usepackage{verbatim}
+\usepackage{setspace}																					%Fußnoten (allgm.
+\usepackage{hyperref}
+\usepackage{bibentry}
+\nobibliography*
+
+\hypersetup{colorlinks=true,urlcolor=blue}														%Zeilenabstände)
+\usepackage{threeparttable}
+\usepackage{subfig}
+\usepackage{epstopdf}
+\usepackage{lscape}																							%Querformat
+\usepackage{booktabs}
+
+\usepackage[latin1]{inputenc}																		%Umlaute
+\usepackage{graphicx}
+%\graphicspath{{../shared-files/}}
+
+\usepackage{tikz}
+\tikzset{
+  treenode/.style = {shape=rectangle, rounded corners,
+                     draw, align=center,
+                     top color=white, bottom color=blue!20},
+  root/.style     = {treenode, font=\Large, bottom color=red!30},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+  dummy/.style    = {circle,draw}
+}
+
+\usepackage{tikz}
+\usetikzlibrary{trees,shapes,arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri}
+\renewcommand*{\familydefault}{\sfdefault}
+
+\tikzset{forestyle/.style = {rectangle, thick, minimum width = 5cm, minimum height = 0.5cm, text width = 4.5cm, outer sep = 1mm},
+	pre/.style={<-, shorten <=1pt, >=stealth, ultra thick},
+	extend/.style={<-,dashed, shorten <=1pt, >=stealth, ultra thick}}
+\captionsetup[subfigure]{labelformat=empty}
+
+\newcommand{\mc}{\multicolumn}
+
+\mode<presentation>
+
+\begin{document}
+
+\begin{frame}[noframenumbering]\begin{center}
+\begin{table}
+\begin{center}
+\begin{threeparttable}
+  \begin{tabular}{lrrrr}\toprule
+  Points      & 200 & 500 & 1,500  & All \\
+  $E\max$ Draws & 500 &  500 &   500 & 500 \\
+  \midrule
+  RMSE        & 0.10 &   0.06 &    0.05 &  0.03  \\
+  Minutes     &  13 &      70 &    112 &   1,995 \\
+  Steps       &  573 &   2,848 &    2,307 &  21,415 \\
+  Evaluations & 1,838 &   6,745 &    6,327 &  41,285 \\
+  \bottomrule
+  \end{tabular}
+  \end{threeparttable}
+  \end{center}
+\end{table}
+\end{center}\end{frame}
+
+
+\end{document}
