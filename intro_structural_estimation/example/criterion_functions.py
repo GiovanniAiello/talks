@@ -50,6 +50,7 @@ def crit_func_ml(probs, obs_data):
 
     return -rslt
 
+
 def crit_func_mm(probs, obs_data):
 
     num_draws = obs_data.shape[0]

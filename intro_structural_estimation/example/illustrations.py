@@ -50,7 +50,6 @@ def smoothing(x, lambda_):
 
 df = simulate_sample(1, [0.8, 0.2],seed=14536)
 
-print(df.head())
 #
 # grid = np.linspace(-3, 3, 250, True)
 #
@@ -59,3 +58,25 @@ print(df.head())
 # values_0_75 = np.apply_along_axis(smoothing, 0, grid, 0.75)
 #
 # graphs_smoothing_functions(grid, values_0_10, values_0_25, values_0_75)
+
+
+def smoothed_probabilities(probs):
+
+    num_sim = 100
+    num_sides = len(probs)
+
+    draws = np.random.logistic(size=(num_sim, num_sides))
+
+    print(draws.shape)
+    grid = np.tile(np.nan, (num_sim, num_sides))
+
+
+    for i in range(num_sim):
+
+        grid[i, :] = probs + draws[i, :]
+
+
+
+
+
+smoothed_probabilities([0.5, 0.5])
