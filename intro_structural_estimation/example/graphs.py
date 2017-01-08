@@ -3,7 +3,7 @@ matplotlib.use('Agg')
 import matplotlib.pylab as plt
 
 
-def graphs_logit_function(grid, values_0_10, values_0_25, values_0_75):
+def graphs_logistic_function(grid, values_0_10, values_0_25, values_0_75):
 
     ax = plt.figure(figsize=(12, 8)).add_subplot(111)
 
@@ -25,7 +25,7 @@ def graphs_logit_function(grid, values_0_10, values_0_25, values_0_75):
     # ax.set_ylabel('Criterion Function', fontsize=16)
     ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.10), fancybox=False, frameon=False,
         shadow=False, ncol=3, fontsize=20)
-    plt.savefig('../images/logit_function.png', bbox_inches='tight', format='png')
+    plt.savefig('../images/logistic_function.png', bbox_inches='tight', format='png')
     #
 
 

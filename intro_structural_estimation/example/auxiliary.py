@@ -72,6 +72,19 @@ def criterion_mm(theta, data_obs, type_, num_sim=None, lambda_=1.0):
     return rslt
 
 
+def criterion_ii(theta, data_obs, num_sim):
+    """ This function evaluates the criterion for indirect inference estimation.
+    """
+    # Run auxiliary model on observed data.
+    beta_obs = sm.OLS(data_obs, np.tile(1, len(data_ob))).fit().params[0]
+
+    # Simulate a dataset with candidate parametrization and run auxiliary model.
+    data_sim, _ = simulate_sample(theta, num_sim)
+    beta_ii = sm.OLS(data_sim, np.tile(1, len(data_sim))).fit().params[0]
+
+    return (beta_obs - beta_ii) ** 2
+
+
 def illustration_ii(theta, num_sim):
     """ This function serves to illustrate the reasoning behind indirect inference estimation.
     """
@@ -82,6 +95,6 @@ def illustration_ii(theta, num_sim):
 
 
 def logistic_function(x, lambda_):
-    """ Logistic function that allows to smooth the simulated probabilites.
+    """ Logistic function that allows to smooth the simulated probabilities.
     """
     return np.exp(x / lambda_) / (1 + np.exp(x / lambda_))

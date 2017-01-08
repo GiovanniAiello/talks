@@ -14,7 +14,7 @@ from graphs import graphs_indirect_inference
 from graphs import graphs_smoothing_functions
 from graphs import graphs_maximum_likelihood
 from graphs import graphs_method_moments
-from graphs import graphs_logit_function
+from graphs import graphs_logistic_function
 
 # First of all we need to simulate a sample of observed data and also create a grid along which
 # we will evaluate the alternative criterion functions.
@@ -51,4 +51,4 @@ grid = np.array(np.linspace(-3, 3, 100), ndmin=2)
 values_0_10 = np.apply_along_axis(logistic_function, 0, grid, 0.10)
 values_0_25 = np.apply_along_axis(logistic_function, 0, grid, 0.25)
 values_0_75 = np.apply_along_axis(logistic_function, 0, grid, 0.75)
-graphs_logit_function(grid[0], values_0_10[0], values_0_25[0], values_0_75[0])
+graphs_logistic_function(grid[0], values_0_10[0], values_0_25[0], values_0_75[0])
