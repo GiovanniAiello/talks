@@ -1,6 +1,42 @@
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pylab as plt
+from scipy.stats import norm
+import numpy as np
+
+
+def graphs_distribution_shifts():
+    """ This graphs plots the distribution of latent utilities for varying levels of the location
+    parameter.
+    """
+    grid = np.linspace(-3, 3, 100)
+
+    ax = plt.figure(figsize=(12, 8)).add_subplot(111)
+
+    negative_mean = norm.pdf(grid, -1, 1)
+    zero_mean = norm.pdf(grid,  0, 1)
+
+    plt.plot(grid, negative_mean, label=r"$\theta$", linewidth=5, color='red')
+    plt.plot(grid, zero_mean, label=r"$\theta'$", linewidth=5, color='blue')
+
+    ax.tick_params(labelsize=18, direction='out', axis='both', top='off', right='off')
+    plt.axvline(x=0, linewidth=5, color='black')
+    ax.set_ylabel('Density Function', fontsize=16)
+    ax.set_xlabel(r'Latent Utility', fontsize=16)
+
+    ax.yaxis.get_major_ticks()[0].set_visible(False)
+    ax.set_xlim(-3, 3)
+    ax.set_ylim(0, 0.45)
+
+    ax.text(-2.5, 0.4, r'$D = 0$', fontsize=30)
+    ax.text(+1.8, 0.4, r'$D = 1$', fontsize=30)
+
+    ax.fill_between(grid, zero_mean, negative_mean, where=grid > 0.0, color='lightblue')
+
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.10), fancybox=False, frameon=False,
+        shadow=False, ncol=3, fontsize=20)
+
+    plt.savefig('../images/distribution_shift.png', bbox_inches='tight', format='png')
 
 
 def graphs_logistic_function(grid, values_0_10, values_0_25, values_0_75):

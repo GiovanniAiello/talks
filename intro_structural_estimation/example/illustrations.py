@@ -10,11 +10,12 @@ from auxiliary import illustration_ii
 from auxiliary import criterion_mm
 from auxiliary import criterion_ml
 
-from graphs import graphs_indirect_inference
 from graphs import graphs_smoothing_functions
+from graphs import graphs_distribution_shifts
+from graphs import graphs_indirect_inference
 from graphs import graphs_maximum_likelihood
-from graphs import graphs_method_moments
 from graphs import graphs_logistic_function
+from graphs import graphs_method_moments
 
 # First of all we need to simulate a sample of observed data and also create a grid along which
 # we will evaluate the alternative criterion functions.
@@ -52,3 +53,7 @@ values_0_10 = np.apply_along_axis(logistic_function, 0, grid, 0.10)
 values_0_25 = np.apply_along_axis(logistic_function, 0, grid, 0.25)
 values_0_75 = np.apply_along_axis(logistic_function, 0, grid, 0.75)
 graphs_logistic_function(grid[0], values_0_10[0], values_0_25[0], values_0_75[0])
+
+# I also want a graph tha that shows how the distribution of latent utilities is affect by shifts
+# in the location parameter.
+graphs_distribution_shifts()
