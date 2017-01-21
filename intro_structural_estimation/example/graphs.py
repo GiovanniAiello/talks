@@ -5,6 +5,33 @@ from scipy.stats import norm
 import numpy as np
 
 
+def graphs_chatter_criterion(grid, classical_values, simulated_values):
+    """ This graphs illustrates the importance of avoiding chatter in the criterion function by
+    fixing the seed value.
+    """
+
+
+    ax = plt.figure(figsize=(12, 8)).add_subplot(111)
+
+    ax.plot(grid, classical_values, label='ML', linewidth=5, color='red')
+    ax.plot(grid, simulated_values, label='SML', linewidth=5, color='blue')
+
+    ax.tick_params(labelsize=18, direction='out', axis='both', top='off', right='off')
+
+    ax.yaxis.get_major_ticks()[0].set_visible(False)
+    ax.set_xlim(-0.5, 0.5)
+    ax.set_yticklabels([])
+
+    fname = 'chatter_criterion_function.png'
+
+    ax.set_xlabel(r'$\theta$', fontsize=20)
+    ax.set_ylabel('Criterion Function', fontsize=16)
+    ax.legend(loc='upper center', bbox_to_anchor=(0.5, -0.10), fancybox=False, frameon=False,
+        shadow=False, ncol=2, fontsize=20)
+
+    plt.savefig('../images/' + fname, bbox_inches='tight', format='png')
+
+
 def graphs_distribution_shifts():
     """ This graphs plots the distribution of latent utilities for varying levels of the location
     parameter.

@@ -8,7 +8,7 @@ def simulate_sample(theta, num_obs, seed=123):
     """
     np.random.seed(seed)
 
-    # We need to  generate containers for the latent utilities and the obseved choices.
+    # We need to  generate containers for the latent utilities and the observed choices.
     u = np.tile(np.nan, (num_obs, 2))
     d = np.tile(np.nan, num_obs)
 
@@ -21,14 +21,14 @@ def simulate_sample(theta, num_obs, seed=123):
     return d, u
 
 
-def criterion_ml(theta, data_obs, type_, num_sim=None):
+def criterion_ml(theta, data_obs, type_, num_sim=None, seed=123):
     """ This function evaluates the criterion for traditional and simulation-based maximum
     likelihood estimation.
     """
     if type_ == 'traditional':
         probs = norm.cdf(theta)
     elif type_ == 'AR-simulator':
-        data_sim, _ = simulate_sample(theta, num_sim)
+        data_sim, _ = simulate_sample(theta, num_sim, seed)
         probs = np.mean(data_sim)
     else:
         raise AssertionError('Invalid request')

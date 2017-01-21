@@ -15,12 +15,21 @@ from graphs import graphs_distribution_shifts
 from graphs import graphs_indirect_inference
 from graphs import graphs_maximum_likelihood
 from graphs import graphs_logistic_function
+from graphs import graphs_chatter_criterion
 from graphs import graphs_method_moments
 
 # First of all we need to simulate a sample of observed data and also create a grid along which
 # we will evaluate the alternative criterion functions.
 grid = np.array(np.linspace(-0.5, 0.5, 100), ndmin=2)
 data_obs, _ = simulate_sample(0.0, 100000, 465)
+
+# I want to illustrate the chatter in the criterion function, when the random seed is not set.
+num_sim = 100
+simulated_values, classical_values = [], []
+for i, point in enumerate(grid[0]):
+    classical_values += [criterion_ml(point, data_obs, 'traditional')]
+    simulated_values += [criterion_ml(point, data_obs, 'AR-simulator', num_sim, i)]
+graphs_chatter_criterion(grid[0], classical_values, simulated_values)
 
 # This loop shows how the number of simulations smoothes out the likelihood function.
 for num_sim in [100, 10000]:
