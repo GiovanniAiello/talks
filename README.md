@@ -9,15 +9,15 @@ Contact:
 
 ### [Introduction to Structural Econometrics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_econometrics/talk.ipynb#/)
 
-I provide a brief introduction to structural econometric modelling.
+We discuss the potential as well as limits of pursuing a structural approach to answer important economic questions. Together we walk through a canonical dynamic behavioral model of human capital investment. At each step of the formalization we discuss the implied economic restrictions and explore possible alternatives.
 
 ### [Introduction to Structural Estimation](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_structural_estimation/talk.ipynb#/)
 
-I provide a brief introduction to structural estimation. 
+We provide a brief introduction to the classical and simulation-based estimation approaches for the estimation of structural economic models. We also conduct a practical estimation exercise.
 
 ### [Introduction to Software Engineering](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_software_engineering/talk.ipynb)
 
-I provide a brief introduction to selected software engineering practices that are of interest to economists.
+We discuss basic techniques of software engineering that allow economists to leverage tools from computational science, increase the transparency of our implementations, and ensure the recomputability of results. This expands the set of possible economic questions that we can address and improve the quality of our answers.
 
 ### [Python for Scientific Computing in Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_scientific_python/talk.ipynb)
 
