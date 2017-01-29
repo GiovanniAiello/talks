@@ -21,4 +21,4 @@ We discuss basic techniques of software engineering that allow economists to lev
 
 ### [Python for Scientific Computing in Economics](http://nbviewer.jupyter.org/format/slides/github/softEcon/talks/blob/master/intro_scientific_python/talk.ipynb)
 
-I provide a brief introduction to different aspects of the *Python* ecosystem that are of interest to economists.
+I provide a brief introduction to different aspects of the Python ecosystem that are of interest to economists.
